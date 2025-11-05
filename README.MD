@@ -1,49 +1,49 @@
-# 🧠 Sistema Especialista — Recomendador de Planos de Telefonia
-
-**Aluno:** Caio Augusto Ledra (@CaioAugustoLedra)  
-**Disciplina:** Linguagens de Programação e Paradigmas — Trabalho 03  
-**Instituição:** UNIDAVI  
-**Linguagem:** SWI-Prolog  
+# 🧠 Sistema Especialista — Recomendador de Planos de Telefonia  
+[![Desenvolvido por Caio Augusto Ledra](https://img.shields.io/badge/Desenvolvido%20por-Caio%20Augusto%20Ledra-007ACC?style=flat-square)](https://github.com/CaioAugustoLedra)  
+[![Linguagem: Prolog](https://img.shields.io/badge/Linguagem-Prolog-B22222?style=flat-square&logo=prolog)](https://www.swi-prolog.org/)  
+[![Paradigma: Lógico](https://img.shields.io/badge/Paradigma-Programação%20Lógica-800080?style=flat-square)](https://en.wikipedia.org/wiki/Logic_programming)  
 
 ---
 
-## 📘 Descrição Geral
+## ✨ Descrição do Projeto
 
-Este projeto implementa um **sistema especialista em Prolog** que recomenda o plano de telefonia mais adequado de acordo com o perfil de uso e preferências do usuário.  
-O sistema faz perguntas sobre consumo de minutos, dados móveis, SMS, uso em roaming e orçamento máximo, aplicando **regras lógicas** para inferir o plano ideal.  
+**Sistema Especialista — Recomendador de Planos de Telefonia** é uma aplicação desenvolvida em **SWI-Prolog** capaz de recomendar o **plano de telefonia mais adequado** de acordo com o perfil de uso do usuário.  
 
-Além da recomendação final, o sistema explica **quais regras foram disparadas** e **por que aquele plano foi escolhido**, simulando o comportamento de um especialista humano.
+O sistema realiza perguntas sobre o consumo mensal de:
+- Minutos de voz;
+- Dados móveis (GB);
+- Quantidade de SMS enviados;
+- Uso em roaming;
+- Orçamento máximo;
+- Preferências entre voz e dados.
+
+Com base nas respostas, o sistema utiliza **regras lógicas (inferência)** para identificar o plano mais compatível e exibe uma **explicação textual** sobre quais regras foram disparadas para chegar à conclusão.
 
 ---
 
-## ⚙️ Estrutura dos Arquivos
+## 📂 Estrutura do Projeto
 
 | Arquivo | Descrição |
-|----------|------------|
-| `main.pl` | Controla o fluxo principal, exibe menu, executa a coleta e mostra resultados. |
-| `kb.pl` | Base de conhecimento — contém os planos disponíveis e seus atributos (minutos, dados, preço etc). |
-| `rules.pl` | Conjunto de regras lógicas que relacionam observações do usuário com planos recomendados. |
-| `ui.pl` | Interface textual com o usuário — perguntas e registro das observações. |
-| `explain.pl` | Módulo responsável por exibir as explicações das regras disparadas. |
+| :--- | :--- |
+| `main.pl` | Controla o fluxo principal, menu inicial e execução do sistema. |
+| `kb.pl` | Base de conhecimento com os planos, preços e limites de uso. |
+| `rules.pl` | Regras de inferência que conectam sintomas (respostas) aos planos recomendados. |
+| `ui.pl` | Interface textual — responsável por coletar respostas do usuário. |
+| `explain.pl` | Gera a explicação das regras disparadas após a inferência. |
 
 ---
 
-## 💻 Como Executar o Sistema
+## ⚙️ Instalação e Execução
 
-### 1️⃣ Instalar o SWI-Prolog
-Baixe e instale a versão estável em:  
-👉 https://www.swi-prolog.org/download/stable
+### 🧩 Pré-requisitos
+- [SWI-Prolog (versão 9.x ou superior)](https://www.swi-prolog.org/download/stable)
 
-### 2️⃣ Clonar o repositório
-
+### 🚀 1. Clonar o Repositório
 ```bash
-git clone https://github.com/<seu_usuario>/recomendador-telefonia.git
-cd recomendador-telefonia
+git clone https://github.com/ledracaio/Telefonia_Logico.git
 ```
--->
 
-### 3️⃣ Abrir no SWI-Prolog
-
+### 🧠 2. Executar o Sistema no SWI-Prolog
 ```bash
 swipl
 ?- set_prolog_flag(encoding, utf8).
@@ -53,10 +53,9 @@ swipl
 
 ---
 
-## 🧩 Exemplo de Execução
+## 💬 Exemplo de Execução
 
-### Entrada do Usuário
-
+### 🧾 Entrada do Usuário
 ```bash
 -- Coleta de informações do usuário --
 Minutos usados: 800.
@@ -71,8 +70,7 @@ Prefere mais dados do que voz? (s/n): s.
 Informações registradas.
 ```
 
-### Saída esperada
-
+### 📤 Saída Esperada
 ```bash
 "[Explicação do resultado]"
 - Regra disparada: preferencia_dados_alto
@@ -85,52 +83,57 @@ RECOMENDAÇÃO FINAL: plus
 
 ---
 
-## 🧠 Contexto do Cenário Testado (Evidência E2E)
+## 🎯 Funcionalidades Chave
 
-O teste a seguir demonstra um cenário em que o usuário utiliza **800 minutos de voz** e **25 GB de dados** mensais, possui orçamento de até **R$ 80**, e indica preferência por **dados móveis**.  
-O objetivo do teste é verificar se o sistema identifica corretamente o **plano “plus”** como o mais adequado, disparando as regras relacionadas a alto consumo de dados e uso geral intenso.
-
----
-
-## 🔢 Passo a Passo (E2E)
-
-1️⃣ O sistema é iniciado com o comando `start.`  
-2️⃣ É exibido o banner com o nome do aluno e o menu principal.  
-3️⃣ O usuário seleciona a opção **1) Executar recomendação**.  
-4️⃣ O sistema faz perguntas sequenciais sobre minutos, GB, SMS, etc.  
-5️⃣ O usuário responde conforme o cenário de teste.  
-6️⃣ O sistema registra todas as observações internamente (`obs/2`).  
-7️⃣ O motor de inferência ativa as regras `preferencia_dados_alto` e `uso_alto_geral`.  
-8️⃣ O sistema determina que o plano “plus” é o mais adequado.  
-9️⃣ A explicação é exibida, com as regras disparadas listadas.  
-🔟 O sistema retorna ao menu principal.
+| Funcionalidade | Descrição |
+| :--- | :--- |
+| **Inferência Automática** | O sistema aplica regras lógicas para deduzir o plano mais adequado. |
+| **Explicação Detalhada** | Exibe quais regras foram ativadas durante a recomendação. |
+| **Base de Conhecimento Modular** | Fatos e planos definidos em arquivo separado (`kb.pl`). |
+| **Interface Textual** | Perguntas e coleta de informações via terminal. |
+| **Execução Interativa** | Permite repetir o processo e registrar novas observações. |
 
 ---
 
-## 📊 Prints de Tela Sequenciais (exemplo para relatório PDF)
+## 🧩 Cenário de Teste (Evidência E2E)
 
-1. Tela inicial com menu.  
-2. Coleta das respostas.  
-3. Registro das observações.  
-4. Explicação das regras disparadas.  
-5. Recomendação final do plano.
+O cenário abaixo demonstra um usuário com:
+- **800 minutos** de voz;
+- **25 GB** de dados móveis;
+- **Orçamento máximo de R$ 80**;
+- Preferência por **dados**.
+
+Neste caso, o sistema dispara as regras `preferencia_dados_alto` e `uso_alto_geral`, resultando na recomendação do plano **“plus”**.
+
+---
+
+## 🔢 Passo a Passo (Execução Completa)
+
+1️⃣ Iniciar o sistema com `start.`  
+2️⃣ O menu principal é exibido.  
+3️⃣ O usuário escolhe **1) Executar recomendação**.  
+4️⃣ O sistema realiza perguntas sobre uso e preferências.  
+5️⃣ As observações são armazenadas como fatos (`obs/2`).  
+6️⃣ As regras correspondentes são ativadas.  
+7️⃣ O plano recomendado é inferido automaticamente.  
+8️⃣ As regras disparadas são listadas no terminal.  
+9️⃣ O sistema exibe a recomendação final e retorna ao menu.  
 
 ---
 
 ## 🧰 Ferramentas Utilizadas
 
-- **SWI-Prolog 9.x**
-- **VS Code** com extensão *SWI-Prolog*
-- **Git / GitHub**
-- **Windows 11 (UTF-8 habilitado)**
+- **SWI-Prolog 9.x**  
+- **VS Code** (com extensão *SWI-Prolog*)  
+- **Git / GitHub**  
+- **Windows 11 (UTF-8 habilitado)**  
 
 ---
 
-## 🧾 Desenvolvido por
+## 👨‍💻 Desenvolvido por
 
-👤 **Caio Augusto Ledra**  
-📧 *caioaugustoledra@unidavi.edu.br*  
+**Caio Augusto Ledra**  
+📧 *caio.ledra@unidavi.edu.br*  
 📚 *UNIDAVI — Sistemas de Informação*  
 
 ---
-
