@@ -1,7 +1,5 @@
 # 🧠 Sistema Especialista — Recomendador de Planos de Telefonia  
-[![Desenvolvido por Caio Augusto Ledra](https://img.shields.io/badge/Desenvolvido%20por-Caio%20Augusto%20Ledra-007ACC?style=flat-square)](https://github.com/CaioAugustoLedra)  
-[![Linguagem: Prolog](https://img.shields.io/badge/Linguagem-Prolog-B22222?style=flat-square&logo=prolog)](https://www.swi-prolog.org/)  
-[![Paradigma: Lógico](https://img.shields.io/badge/Paradigma-Programação%20Lógica-800080?style=flat-square)](https://en.wikipedia.org/wiki/Logic_programming)  
+[![Desenvolvido por Caio Augusto Ledra](https://img.shields.io/badge/Desenvolvido%20por-Caio%20Augusto%20Ledra-007ACC?style=flat-square)](https://github.com/CaioAugustoLedra)  [![Linguagem: Prolog](https://img.shields.io/badge/Linguagem-Prolog-B22222?style=flat-square&logo=prolog)](https://www.swi-prolog.org/)  [![Paradigma: Lógico](https://img.shields.io/badge/Paradigma-Programação%20Lógica-800080?style=flat-square)](https://en.wikipedia.org/wiki/Logic_programming)  
 
 ---
 
@@ -30,6 +28,7 @@ Com base nas respostas, o sistema utiliza **regras lógicas (inferência)** para
 | `rules.pl` | Regras de inferência que conectam sintomas (respostas) aos planos recomendados. |
 | `ui.pl` | Interface textual — responsável por coletar respostas do usuário. |
 | `explain.pl` | Gera a explicação das regras disparadas após a inferência. |
+| `README.MD` | Presente arquivo de informações e instruções. |
 
 ---
 
@@ -50,6 +49,7 @@ swipl
 ?- [main].
 ?- start.
 ```
+*** Caso a o SWI-Prolog possa não estar no mesmo local do repositório ao invés de utilizar "[main]." selecione o arquivo main.pl através do Consult**
 
 ---
 
@@ -101,7 +101,7 @@ O cenário abaixo demonstra um usuário com:
 - **800 minutos** de voz;
 - **25 GB** de dados móveis;
 - **Orçamento máximo de R$ 80**;
-- ***Demais campos preencher com 0.**
+- *** Demais campos preencher com 0.**
 - Preferência por **dados**.
 
 Neste caso, o sistema dispara as regras `preferencia_dados_alto` e `uso_alto_geral`, resultando na recomendação do plano **“plus”**.
