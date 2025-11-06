@@ -49,7 +49,7 @@ swipl
 ?- [main].
 ?- start.
 ```
-*** Caso a o SWI-Prolog possa não estar no mesmo local do repositório ao invés de utilizar "[main]." selecione o arquivo main.pl através do Consult**
+***Caso a o SWI-Prolog possa não estar no mesmo local do repositório ao invés de utilizar "[main]." selecione o arquivo main.pl através do Consult**
 
 ---
 
@@ -101,7 +101,7 @@ O cenário abaixo demonstra um usuário com:
 - **800 minutos** de voz;
 - **25 GB** de dados móveis;
 - **Orçamento máximo de R$ 80**;
-- *** Demais campos preencher com 0.**
+- ***Demais campos preencher com 0.**
 - Preferência por **dados**.
 
 Neste caso, o sistema dispara as regras `preferencia_dados_alto` e `uso_alto_geral`, resultando na recomendação do plano **“plus”**.
@@ -126,8 +126,7 @@ Neste caso, o sistema dispara as regras `preferencia_dados_alto` e `uso_alto_ger
 
 - **SWI-Prolog 9.x**  
 - **VS Code** (com extensão *SWI-Prolog*)  
-- **Git / GitHub**  
-- **Windows 11 (UTF-8 habilitado)**  
+- **Git / GitHub**    
 
 ---
 
